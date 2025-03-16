@@ -1,62 +1,82 @@
 import * as React from "react"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import * as indexModuleCss from "../components/index.module.css"
 import AboutSection from "../components/AboutSection"
 import ProjectsSection from "../components/ProjectsSection"
 import ContactSection from "../components/ContactSection"
 
-
 const IndexPage = () => {
-  const sectionsRef = useRef([]);
-  
   useEffect(() => {
-    let isScrolling = false;
-    let currentSectionIndex = 0;
-    const sections = sectionsRef.current;
+    // Wait for the DOM to be fully loaded
+    if (typeof window !== 'undefined') {
+      let isScrolling = false;
+      let currentSection = 0;
+      const sections = document.querySelectorAll('section');
 
-    const scrollToSection = (index) => {
-      isScrolling = true;
-      sections[index].scrollIntoView({ behavior: "smooth" });
-      currentSectionIndex = index;
-      setTimeout(() => {
-        isScrolling = false;
-      }, 1000);
-    };
+      const scrollToSection = (index) => {
+        if (index >= 0 && index < sections.length) {
+          isScrolling = true;
+          sections[index].scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        }
+      };
 
-    const handleWheel = (e) => {
-      e.preventDefault();
-      if (isScrolling) return;
+      const handleWheel = (e) => {
+        e.preventDefault();
+        if (isScrolling) return;
 
-      if (e.deltaY > 0 && currentSectionIndex < sections.length - 1) {
-        scrollToSection(currentSectionIndex + 1);
-      } else if (e.deltaY < 0 && currentSectionIndex > 0) {
-        scrollToSection(currentSectionIndex - 1);
-      }
-    };
+        if (e.deltaY > 0 && currentSection < sections.length - 1) {
+          currentSection++;
+          scrollToSection(currentSection);
+        } else if (e.deltaY < 0 && currentSection > 0) {
+          currentSection--;
+          scrollToSection(currentSection);
+        }
+      };
 
-    const container = document.querySelector('#sections-container');
-    container.addEventListener('wheel', handleWheel, { passive: false });
+      // Add touch support for mobile devices
+      let touchStartY = 0;
+      const handleTouchStart = (e) => {
+        touchStartY = e.touches[0].clientY;
+      };
 
-    return () => {
-      container.removeEventListener('wheel', handleWheel);
-    };
+      const handleTouchMove = (e) => {
+        if (isScrolling) return;
+        
+        const touchEndY = e.touches[0].clientY;
+        const diff = touchStartY - touchEndY;
+
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+          if (diff > 0 && currentSection < sections.length - 1) {
+            currentSection++;
+            scrollToSection(currentSection);
+          } else if (diff < 0 && currentSection > 0) {
+            currentSection--;
+            scrollToSection(currentSection);
+          }
+        }
+      };
+
+      document.addEventListener('wheel', handleWheel, { passive: false });
+      document.addEventListener('touchstart', handleTouchStart);
+      document.addEventListener('touchmove', handleTouchMove);
+
+      return () => {
+        document.removeEventListener('wheel', handleWheel);
+        document.removeEventListener('touchstart', handleTouchStart);
+        document.removeEventListener('touchmove', handleTouchMove);
+      };
+    }
   }, []);
 
   return (
     <Layout>
-      <div className={indexModuleCss.sectionsContainer} id="sections-container">
-        <div ref={el => sectionsRef.current[0] = el}>
-          <AboutSection />
-        </div>
-        <div ref={el => sectionsRef.current[1] = el}>
-          <ProjectsSection />
-        </div>
-        <div ref={el => sectionsRef.current[2] = el}>
-          <ContactSection />
-        </div>
-      </div>
+      <AboutSection />
+      <ProjectsSection />
+      <ContactSection />
     </Layout>
   )
 }

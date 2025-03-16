@@ -19,6 +19,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -26,20 +28,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Patricia Marcos - Data Analyst - Portfolio`,
-        short_name: `Patricia Marcos - Data Analyst`,
+        name: `patricia-marcos-portfolio`,
+        short_name: `portfolio`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#FDF5E6`,
+        theme_color: `#E67E22`,
         display: `minimal-ui`,
-        icon: `src/images/favicon-96x96.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // Make sure this file exists
       },
     },
   ],
