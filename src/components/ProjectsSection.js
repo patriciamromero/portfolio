@@ -24,7 +24,7 @@ const projects = [
     title: "Dashboard using Excel",
     subtitle: "Data Visualization",
     description: "Transportation metrics dashboard and logistics movement tracking",
-    url: "/puf_anual_report_2025.htm",
+    url: "/portfolio/puf_anual_report_2025.htm",
     technologies: ["Excel", "Analytics"]
   },
   {
