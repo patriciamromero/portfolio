@@ -21,18 +21,18 @@ import {
 
 const projects = [
   {
-    title: "Project 1",
-    subtitle: "Data Analysis",
-    description: "Description of your first project",
-    url: "https://project1-url.com",
-    technologies: ["React", "Node.js", "MongoDB"]
+    title: "Dashboard using Excel",
+    subtitle: "Data Visualization",
+    description: "Transportation metrics dashboard and logistics movement tracking",
+    url: "/puf_anual_report_2025.htm",
+    technologies: ["Excel", "Analytics"]
   },
   {
-    title: "Project 2",
-    subtitle: "Data Visualization",
-    description: "Description of your second project",
-    url: "https://project2-url.com",
-    technologies: ["Python", "Django", "PostgreSQL"]
+    title: "Retail Consumer Analysis using PowerBI",
+    subtitle: "Data Visualization & Analysis",
+    description: "Analysis of retail consumer characteristics and their behavior in relation to advertising and purchasing channels",
+    url: "https://app.powerbi.com/view?r=eyJrIjoiNDIwM2M4MWYtMWY4My00ZTFmLTg1MjYtNmM5NWU1YTFiNGY3IiwidCI6ImNlYTFlYTNlLTYwYjItNGY3NS1hNmMyLWE2MDIyZThmOTYxYiIsImMiOjh9",
+    technologies: ["PowerBI", "Analytics"]
   },
   {
     title: "F1 Analysis",
