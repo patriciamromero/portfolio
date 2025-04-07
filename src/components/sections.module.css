@@ -11,20 +11,22 @@
 }
 
 .section {
-  height: calc(100vh - 60px);
-  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 1rem 0;
 }
 
 .sectionContent {
   max-width: 1200px;
   width: 100%;
   text-align: center;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   position: relative;
   z-index: 2;
 }
@@ -50,6 +52,7 @@
 /* About Section */
 .aboutSection {
   background-color: var(--cream);
+  padding-top: 2vh;
 }
 
 .aboutSection h2 {
@@ -144,7 +147,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .scrollIndicator {
@@ -347,6 +350,9 @@
 .contactSection {
   background-color: var(--peach);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contactTitle {
@@ -362,6 +368,7 @@
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
 .contactInfo {
@@ -461,14 +468,77 @@
   pointer-events: none;
 }
 
-/* Add responsive styles as needed */
-@media (max-width: 768px) {
-  .projectCard {
-    padding: 2rem;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sectionContent {
+    padding: 0 1.5rem;
   }
 
-  .projectDetails h3 {
-    font-size: 2rem;
+  .aboutSection h2 {
+    font-size: 3.5rem;
+  }
+
+  .aboutSection .role {
+    font-size: 1.8rem;
+  }
+
+  .aboutSection p {
+    font-size: 1.1rem;
+  }
+
+  .skillsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+    padding: 4rem 0;
+    overflow-y: auto;
+  }
+
+  .contentWrapper {
+    padding: 2rem 0;
+  }
+
+  .aboutSection h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .aboutSection .role {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .aboutSection p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .skillsContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .skillGroup {
+    padding: 1.5rem;
+  }
+
+  .skillTitle {
+    font-size: 1.3rem;
+  }
+
+  .skillIcon {
+    font-size: 1.8rem;
+  }
+
+  .projectCard {
+    padding: 2rem;
   }
 
   .carouselButton {
@@ -477,15 +547,145 @@
   }
 
   .carouselButton:first-child {
-    left: -10px;
+    left: -20px;
   }
 
   .carouselButton:last-child {
-    right: -10px;
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .aboutSection h2 {
+    font-size: 2.2rem;
+  }
+
+  .aboutSection .role {
+    font-size: 1.3rem;
+  }
+
+  .aboutSection p {
+    font-size: 0.95rem;
+  }
+
+  .skillGroup {
+    padding: 1.2rem;
+  }
+
+  .skillTitle {
+    font-size: 1.2rem;
+  }
+
+  .skillIcon {
+    font-size: 1.5rem;
+  }
+
+  .projectCard {
+    padding: 1.5rem;
+  }
+
+  .carouselButton {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* MacBook Air specific adjustments */
+@media (min-width: 1024px) and (max-width: 1280px) and (-webkit-min-device-pixel-ratio: 2) {
+  .section {
+    height: auto;
+    min-height: auto;
+    padding: 0;
+    overflow: visible;
+  }
+  
+  .sectionContent {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+  
+  .aboutSection h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .aboutSection .role {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .introText {
+    margin: 0.8rem auto 1rem;
+    font-size: 0.95rem;
+    max-width: 600px;
+  }
+  
+  .skillsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0;
+    margin: 0.5rem auto;
+    max-width: 100%;
+  }
+  
+  .skillGroup {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 200px;
+    padding: 0.8rem;
+    margin: 0;
+  }
+  
+  .skillIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .skillTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .skillItem {
+    padding: 0.2rem 0;
+    margin-bottom: 0.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .contentWrapper {
+    padding: 0.5rem 0;
+  }
+
+  .contactSection {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .contactTitle {
+    font-size: 3rem;
+    margin-bottom: 2rem;
   }
 
   .contactGrid {
-    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .section {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
   }
 }
 
@@ -522,7 +722,7 @@
 
 .introText {
   max-width: 700px;
-  margin: 2rem auto 4rem;
+  margin: 1.5rem auto 3rem;
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-color);
@@ -531,15 +731,16 @@
 .skillsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4rem;
-  margin: 4rem auto;
-  max-width: 1200px;
-  padding: 0 2rem;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+  width: 100%;
 }
 
 .skillGroup {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 1.5rem;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   border-radius: 30px;
@@ -547,6 +748,9 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .skillGroup:hover {
@@ -556,15 +760,15 @@
 }
 
 .skillIcon {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--cream);
   border-radius: 50%;
-  margin: 0 auto 2rem;
-  font-size: 1.8rem;
+  margin: 0 auto 1.5rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
   transition: all 0.3s ease;
 }
@@ -577,11 +781,11 @@
 
 .skillTitle {
   font-family: var(--heading-font);
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
   color: var(--text-color);
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .skillTitle::after {
@@ -604,12 +808,12 @@
 
 .skillItem {
   font-family: var(--body-font);
-  padding: 0.8rem 0;
+  padding: 0.5rem 0;
   color: var(--text-color);
   opacity: 0.8;
   transition: all 0.3s ease;
   position: relative;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .skillItem:not(:last-child)::after {
